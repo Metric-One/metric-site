@@ -1,3 +1,14 @@
 {
-  "nav": { "platforms": "Platforms", "features": "Features", "dtc": "DTC", "agencies": "Agencies", "pricing": "Pricing", "docs": "Docs", "login": "Log in", "startFree": "Start free" }
+  "nav": {
+    "platforms": "Platforms",
+    "features": "Features",
+    "dtc": "DTC",
+    "agencies": "Agencies",
+    "pricing": "Pricing",
+    "docs": "Docs",
+    "login": "Log in",
+    "startFree": "Start free",
+    "services": "Services",
+    "learn": "Learn"
+  }
 }

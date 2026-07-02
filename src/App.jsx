@@ -4,6 +4,9 @@ import { MeshBackground } from '@/components/ui'
 import MarketingLayout from '@/pages/MarketingLayout.jsx'
 import Home from '@/pages/Home.jsx'
 
+const Planner = lazy(() => import('@/pages/Planner.jsx'))
+const Services = lazy(() => import('@/pages/Services.jsx'))
+const Learn = lazy(() => import('@/pages/Learn.jsx'))
 const Platforms = lazy(() => import('@/pages/Platforms.jsx'))
 const Features = lazy(() => import('@/pages/Features.jsx'))
 const Dtc = lazy(() => import('@/pages/Dtc.jsx'))
@@ -28,6 +31,9 @@ export default function App() {
         <Routes>
           <Route element={<MarketingLayout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/planner" element={<Planner />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/learn" element={<Learn />} />
             <Route path="/platforms" element={<Platforms />} />
             <Route path="/features" element={<Features />} />
             <Route path="/solutions/dtc" element={<Dtc />} />

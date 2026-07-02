@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useSeo } from '@/lib/seo'
 import { TrendingUp, Bot, Network, LayoutGrid, Users, Bell, Globe, Lock } from 'lucide-react'
 import { Surface } from '@/components/ui'
 import { stagger, item, viewportOnce, ease } from '@/lib/motion'
@@ -15,6 +16,7 @@ const features = [
 ]
 
 export default function Features() {
+  useSeo({ title: 'Features · Metric One' })
   return (
     <main className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
       <motion.h1 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease }} className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">

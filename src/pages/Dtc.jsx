@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useSeo } from '@/lib/seo'
 import { ArrowRight, Check } from 'lucide-react'
 import { Surface, buttonClasses } from '@/components/ui'
 import { stagger, item, viewportOnce, ease } from '@/lib/motion'
@@ -15,6 +16,7 @@ const points = [
 ]
 
 export default function Dtc() {
+  useSeo({ title: 'DTC · Metric One' })
   return (
     <main className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
       <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-2xs font-medium uppercase tracking-[0.18em] text-primary">For DTC brands</motion.p>

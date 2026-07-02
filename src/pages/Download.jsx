@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useSeo } from '@/lib/seo'
 import { Laptop, Monitor, Smartphone, Globe, Download as DownloadIcon } from 'lucide-react'
 import { Surface, Button } from '@/components/ui'
 import { stagger, item, viewportOnce, ease } from '@/lib/motion'
@@ -13,6 +14,7 @@ const targets = [
 ]
 
 export default function Download() {
+  useSeo({ title: 'Download · Metric One' })
   const current = getDownloadTarget().os
 
   return (

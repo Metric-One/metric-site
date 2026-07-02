@@ -10,7 +10,9 @@ const links = [
   { to: '/solutions/dtc', key: 'nav.dtc' },
   { to: '/solutions/agency', key: 'nav.agencies' },
   { to: '/pricing', key: 'nav.pricing' },
-  { to: '/docs', key: 'nav.docs' }
+  { to: '/docs', key: 'nav.docs' },
+  { to: '/services', key: 'nav.services' },
+  { to: '/learn', key: 'nav.learn' }
 ]
 
 export default function MarketingNav() {
