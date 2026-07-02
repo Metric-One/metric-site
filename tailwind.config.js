@@ -25,8 +25,8 @@ export default {
       },
       fontFamily: {
         display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace']
+        sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace']
       },
       fontSize: {
         '2xs': ['0.6875rem', { lineHeight: '1rem' }]
@@ -41,8 +41,8 @@ export default {
           '100%': { opacity: '1', transform: 'translateY(0)' }
         },
         glowPulse: {
-          '0%,100%': { boxShadow: '0 0 0 rgba(167,139,250,0)' },
-          '50%': { boxShadow: '0 0 22px rgba(167,139,250,0.35)' }
+          '0%,100%': { boxShadow: '0 0 0 rgba(47,107,255,0)' },
+          '50%': { boxShadow: '0 0 22px rgba(47,107,255,0.35)' }
         },
         drift: {
           '0%,100%': { transform: 'translate(0,0) scale(1)' },
