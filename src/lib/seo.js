@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 // Site-wide SEO identity. Origin is env-driven like every cross-repo link;
 // falls back to the live deployment so canonical/OG stay absolute.
@@ -29,6 +30,8 @@ function upsertLink(rel, href) {
 
 export function useSeo({ title, description = DEFAULT_DESCRIPTION }) {
   const { pathname } = useLocation()
+  const { i18n } = useTranslation()
+  const lang = i18n.language
   useEffect(() => {
     const full = title ? `${title}` : SITE_NAME
     const url = `${SITE_ORIGIN}${pathname === '/' ? '/' : pathname}`
@@ -39,9 +42,10 @@ export function useSeo({ title, description = DEFAULT_DESCRIPTION }) {
     upsertMeta('property', 'og:type', 'website')
     upsertMeta('property', 'og:url', url)
     upsertMeta('property', 'og:site_name', SITE_NAME)
+    upsertMeta('property', 'og:locale', lang)
     upsertMeta('name', 'twitter:card', 'summary')
     upsertMeta('name', 'twitter:title', full)
     upsertMeta('name', 'twitter:description', description)
     upsertLink('canonical', url)
-  }, [title, description, pathname])
+  }, [title, description, pathname, lang])
 }
