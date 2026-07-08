@@ -4,15 +4,13 @@ import { Logo, ThemeToggle, LanguageMenu, buttonClasses } from '@/components/ui'
 import { appHref } from '@/lib/links'
 import { cn } from '@/lib/cn'
 
+// Only routes with real/intentional content sit in the primary nav. The
+// stripped "Coming soon" routes (platforms, features, solutions/*, pricing,
+// docs, download, learn) stay reachable by URL but leave the top bar until
+// they carry founder-approved content (see STRICT BUILD RULE in CLAUDE.md).
 const links = [
-  { to: '/platforms', key: 'nav.platforms' },
-  { to: '/features', key: 'nav.features' },
-  { to: '/solutions/dtc', key: 'nav.dtc' },
-  { to: '/solutions/agency', key: 'nav.agencies' },
-  { to: '/pricing', key: 'nav.pricing' },
-  { to: '/docs', key: 'nav.docs' },
-  { to: '/services', key: 'nav.services' },
-  { to: '/learn', key: 'nav.learn' }
+  { to: '/planner', key: 'nav.planner' },
+  { to: '/services', key: 'nav.services' }
 ]
 
 export default function MarketingNav() {

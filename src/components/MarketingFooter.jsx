@@ -1,21 +1,22 @@
 import { Link } from 'react-router-dom'
 import { Logo } from '@/components/ui'
+import { appHref } from '@/lib/links'
 
+// Only TRUE-today content: brand, real in-repo route links, the real cross-repo
+// appHref() links into the dashboard app, and copyright. No unverified claims
+// (no certs, no connector counts, no security assertions) — see STRICT BUILD
+// RULE in CLAUDE.md. Real footer content arrives with founder input.
 const cols = [
-  { title: 'Product', links: [['Features', '/features'], ['Pricing', '/pricing'], ['Platforms', '/platforms'], ['Download', '/download'], ['Docs', '/docs']] },
-  { title: 'Platforms', links: [['Shopify', '/platforms'], ['Amazon', '/platforms'], ['Meta Ads', '/platforms'], ['Google Ads', '/platforms'], ['40+ more', '/platforms']] },
-  { title: 'Company', links: [['About', '#'], ['Customers', '#'], ['Careers', '#'], ['Blog', '#'], ['Contact', '#']] },
-  { title: 'Security', links: [['SOC 2 Type II', '#'], ['GDPR & KVKK', '#'], ['AES-256 at rest', '#'], ['SSL Pinning', '#'], ['Status', '#']] }
+  { title: 'Product', links: [['Planner', '/planner'], ['Services', '/services']] }
 ]
 
 export default function MarketingFooter() {
   return (
     <footer className="border-t border-line">
       <div className="mx-auto max-w-6xl px-5 py-12">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <Logo />
-            <p className="mt-3 max-w-xs text-sm text-fg-muted">True net-profit analytics &amp; AI Growth Officer for modern commerce brands.</p>
           </div>
           {cols.map((col) => (
             <div key={col.title}>
@@ -25,10 +26,16 @@ export default function MarketingFooter() {
               </ul>
             </div>
           ))}
+          <div>
+            <p className="text-sm font-semibold">Account</p>
+            <ul className="mt-3 space-y-2 text-sm text-fg-muted">
+              <li><a href={appHref('/login')} className="transition hover:text-fg">Log in</a></li>
+              <li><a href={appHref('/register')} className="transition hover:text-fg">Start free</a></li>
+            </ul>
+          </div>
         </div>
-        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-2xs text-fg-subtle sm:flex-row">
-          <p>© 2026 METRICS · All rights reserved.</p>
-          <p>Made for operators, not dashboards.</p>
+        <div className="mt-10 border-t border-line pt-6 text-2xs text-fg-subtle">
+          <p>© 2026 Metric One · All rights reserved.</p>
         </div>
       </div>
     </footer>

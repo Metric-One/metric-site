@@ -174,34 +174,37 @@ marketing + founder portfolio site**, decoupled from the actual product apps:
 
 ---
 
-## Verified module / page status (2026-07-05 — checked against actual code, not old CLAUDE.md claims)
+## Verified module / page status (updated 2026-07-07, after Day 1 + Day 2 truth-cleanup)
 
-| Route | File | Real state | Old CLAUDE.md said |
+Day 1 (branch `chore/home-v2`, commit `532d931`) stripped the 7 legacy pages of
+all invented claims and rebuilt this doc. Day 2 (branch `chore/footer-nav-truth`)
+stripped the footer, applied the new nav, and deleted the orphaned fabricated
+data files. The repo now carries **zero unapproved factual claims in any
+rendered surface.**
+
+| Route | File | Real state now | Was (pre-cleanup) |
 |---|---|---|---|
-| `/` | `Home.jsx` | **Real, shipped.** Already rebuilt for the dual-surface Metric One story (hero, "every channel" section, planner teaser, services strip). Ahead of what the old doc described as still-TBD. | "to be built, ask founder" |
-| `/planner` | `Planner.jsx` | Honest "Coming soon" shell, correctly commented as waiting on founder content. | **Not mentioned at all** in the old doc's page inventory |
-| `/services` | `Services.jsx` | Honest "Coming soon" shell. | **Not mentioned at all** |
-| `/learn` | `Learn.jsx` | Honest "Coming soon" shell. | **Not mentioned at all** |
-| `/platforms` | `Platforms.jsx` | **Not a placeholder.** Fully written page: fabricated connector list/status via `marketing.fixtures.js`, "12 connectors at launch" claim. | "kept as empty shell / minimal placeholder" |
-| `/features` | `Features.jsx` | **Not a placeholder.** Full 8-item feature grid with specific, invented claims (AES-256-GCM, 8 RBAC roles, react-grid-layout, etc.) | "kept as empty shell / minimal placeholder" |
-| `/solutions/dtc` | `Dtc.jsx` | **Not a placeholder.** Full page with invented specifics (iyzico, Klaviyo, 60-day LTV). | "kept as empty shell / minimal placeholder" |
-| `/solutions/agency` | `Agency.jsx` | **Not a placeholder.** Full page, invented specifics (8 roles, white-label, volume pricing). | "kept as empty shell / minimal placeholder" |
-| `/pricing` | `Pricing.jsx` | **Not a placeholder**, and **conflicts with the new locked Part 1 pricing** (see Repo scope note above). | "kept as empty shell / minimal placeholder" |
-| `/docs` | `Docs.jsx` | **Not a placeholder.** Full doc index with invented section list (REST/webhooks, roles, mobile packaging). | "kept as empty shell / minimal placeholder" |
-| `/download` | `Download.jsx` | **Not a placeholder.** Full OS-detect download page for Capacitor/Tauri builds that don't exist yet and are explicitly out of V1 (Part 2). | "kept as empty shell / minimal placeholder" |
-| About/Career | — | **Does not exist** — no file, no route. | "to be added" — this one was accurate |
+| `/` | `Home.jsx` | **Real, shipped. Untouched** by the cleanup (already correct). Dual-surface Metric One story. Uses the product name "AdMetrics" in one CTA — a naming question, not a fabrication (see "Open, awaiting founder"). | same |
+| `/planner` | `Planner.jsx` | Honest "Coming soon" shell. In primary nav (active teaser). | shell (unchanged) |
+| `/services` | `Services.jsx` | Honest "Coming soon" shell. In primary nav. | shell (unchanged) |
+| `/learn` | `Learn.jsx` | Honest "Coming soon" shell. Reachable by URL; not in nav. | shell (unchanged) |
+| `/platforms` | `Platforms.jsx` | **Honest "Coming soon" shell.** Fabricated connector list/status + "12 connectors" claim removed. | full page, invented connector data |
+| `/features` | `Features.jsx` | **Honest "Coming soon" shell.** 8 invented feature claims (AES-256, 8 RBAC roles, CAPI, etc.) removed. | full page, invented claims |
+| `/solutions/dtc` | `Dtc.jsx` | **Honest "Coming soon" shell.** iyzico/Klaviyo/60-day-LTV specifics removed. | full page, invented specifics |
+| `/solutions/agency` | `Agency.jsx` | **Honest "Coming soon" shell.** 8-roles/white-label/volume-pricing specifics removed. | full page, invented specifics |
+| `/pricing` | `Pricing.jsx` | **Honest shell** showing only the locked tier NAMES (Free / Pro / Max) + "Coming at launch". No prices, no feature lists (not founder-approved). Fabricated `$49/$199/Custom` tiers removed. | full page, fabricated tiers conflicting with Part 1 |
+| `/docs` | `Docs.jsx` | **Honest "Coming soon" shell.** Invented doc index removed. | full page, invented index |
+| `/download` | `Download.jsx` | **Honest "Coming soon" shell.** Fake Capacitor/Tauri download targets + "signed & notarized" claim removed (builds don't exist; PWA-only per Part 2). | full page, fake download targets |
+| About/Career | — | **Still does not exist** — no file, no route. Needs founder bio copy first. | did not exist |
 
-**Bottom line:** the single biggest gap between the old CLAUDE.md and reality
-is that it described 7 legacy pages as inert placeholders when they are
-fully-written pages full of unapproved, invented numbers — a direct violation
-of this repo's own STRICT BUILD RULE. Fixing that (not building new pages) is
-the actual priority, see the day-by-day plan.
+**Chrome (site-wide) status:**
+- `MarketingNav.jsx` — **cleaned (Day 2).** Primary nav is now `Planner · Services` + Log in + Start free. The 7 stripped routes + Learn left the top bar (still reachable by URL). Added `nav.planner`/`nav.services` keys to all 10 locale files.
+- `MarketingFooter.jsx` — **cleaned (Day 2).** Removed the fabricated "SOC 2 Type II / GDPR & KVKK / AES-256 at rest / SSL Pinning" security column, the "40+ more"/Amazon connector column, the dead `#` links (About/Customers/Careers/Blog/Contact/Status), and the unverified "True net-profit analytics & AI Growth Officer…" tagline. Kept: logo, real route links (Planner/Services), real `appHref()` account links, copyright (rebranded METRICS → Metric One).
 
-**Nav/IA reality:** `MarketingNav.jsx` still lists all 7 legacy pages plus
-Services/Learn as primary nav items, with no About/Career link. The nav has
-not been updated to reflect the "dual-product portfolio" repositioning the old
-CLAUDE.md already claimed had happened — visually and structurally this is
-still the pre-pivot AdMetrics marketing site.
+**Deleted (Day 2) — orphaned files that held the last fabricated data:**
+- `src/data/marketing.fixtures.js` — fake connector list + live/syncing statuses. Orphaned once `Platforms.jsx` was stripped.
+- `src/components/TrendChart.jsx` + `src/data/trend.js` — an invented 30-day revenue/profit/spend series. Already unrendered (no page imported TrendChart).
+- `src/platform/detect.js` — **kept.** Orphaned (only `Download.jsx` used it) but contains no factual claims, just OS-detection logic. Left for reuse; delete if it's still unused when the real download page lands.
 
 **Everything else checked out true:**
 - Pure JS/JSX, zero `.ts`/`.tsx` files. ✅
@@ -266,24 +269,53 @@ Deploy: static Vite build → Vercel (`vercel.json` present, SPA rewrite
 configured, `.vercel` project link already present locally). Set
 `VITE_APP_URL` in the Vercel project env to `metric-App`'s production URL.
 
-## Map (current files)
+## Map (current files, as of Day 2 cleanup)
 
-- `src/pages/` — `Home.jsx` (real), `Planner.jsx`/`Services.jsx`/`Learn.jsx`
-  (honest shells), `Platforms.jsx`/`Features.jsx`/`Dtc.jsx`/`Agency.jsx`/
-  `Pricing.jsx`/`Docs.jsx`/`Download.jsx` (legacy, fully written, unapproved —
-  see Verified module status), `MarketingLayout.jsx`. **No About/Career page
-  yet.**
-- `src/components/` — `MarketingNav.jsx` (still lists all legacy routes,
-  no About/Career), `MarketingFooter.jsx`, static `TrendChart.jsx`.
+- `src/pages/` — `Home.jsx` (real), and honest "Coming soon" shells for
+  `Planner`/`Services`/`Learn`/`Platforms`/`Features`/`Dtc`/`Agency`/`Pricing`/
+  `Docs`/`Download`, plus `MarketingLayout.jsx`. **No About/Career page yet.**
+- `src/components/` — `MarketingNav.jsx` (primary nav = Planner · Services),
+  `MarketingFooter.jsx` (claim-free). `TrendChart.jsx` **deleted** (Day 2).
 - `src/components/ui/` — copied primitives (Button, Surface, Logo, Marquee,
-  ThemeToggle, LanguageMenu, LiveSparkline, MeshBackground, Spinner).
-- `src/data/` — static fixtures (`marketing.fixtures.js`, `trend.js`) backing
-  the legacy pages' invented numbers.
+  ThemeToggle, LanguageMenu, LiveSparkline, MeshBackground, Spinner). Note:
+  `Marquee`/`LiveSparkline` are exported but not currently rendered by any page.
+- `src/data/` — **empty of marketing fixtures now.** `marketing.fixtures.js`
+  and `trend.js` were deleted in Day 2 (held fabricated connector/revenue data).
 - `src/lib/` — `links.js` (cross-repo contract), `seo.js` (`useSeo` hook,
   used per-page), `motion.js`, `cn.js`, `format.js`, `useToken.js`.
-- `src/platform/detect.js` — OS detection backing `Download.jsx`.
-- `src/i18n/` — 10 nav-only locale files (RTL for ar/fa).
+- `src/platform/detect.js` — OS-detection helper, now orphaned (its only user,
+  `Download.jsx`, was stripped). No claims; kept for reuse.
+- `src/i18n/` — 10 nav-only locale files (RTL for ar/fa), each with the full
+  nav key set incl. `planner`/`services`.
 - `docs/screenshots/` — 3 before/after theme screenshots (README reference).
+
+## Open, awaiting founder content (do NOT invent any of this)
+
+Everything below is a real gap that is **blocked on founder-provided content** —
+per the STRICT BUILD RULE, leave as honest shells until the founder supplies the
+words/numbers/assets:
+
+1. **About / Career page** — does not exist. Needs founder bio, the Metric One
+   build-journey narrative, and company values. No route until copy exists.
+2. **Real pricing** — `Pricing.jsx` shows only tier names. Needs founder-approved
+   per-tier prices (Part 1 v0: Free / Pro ~$20 / Max ~$100, "not final") and the
+   per-tier feature lists.
+3. **Platforms page** — needs the real, founder-confirmed connector list and
+   which are actually live vs. planned (Tier 1/2/3 per Part 2), no invented
+   statuses or counts.
+4. **Features / DTC / Agency pages** — need real, verifiable capability copy
+   (no unproven certs, role counts, or vendor-integration claims).
+5. **Docs** — needs real documentation, or should stay a shell / link out.
+6. **Download** — stays a shell until real PWA install guidance (and any future
+   Capacitor/Tauri builds, which are out of V1) exist.
+7. **Services & Planner & Learn copy** — the shells the Home CTAs point to need
+   real founder copy.
+8. **Product naming decision** — Home.jsx + `links.js` still say "AdMetrics".
+   Part 1 only uses "Metric One" (Dashboard as a surface). Whether "AdMetrics"
+   survives is a founder call; Home was deliberately left untouched pending it.
+9. **Mascot (Safir)** — no asset in-repo. Ask before adding anywhere.
+10. **Footer** — currently minimal/honest; real footer IA (legal pages,
+    social, contact) awaits founder input.
 
 ---
 
